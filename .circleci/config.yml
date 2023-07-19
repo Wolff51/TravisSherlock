@@ -2,8 +2,8 @@ version: 2.1
 
 jobs:
   build:
-    machine:
-      image: circleci/macos:latest
+    macos:
+      xcode: 12.5.0
 
     steps:
       - checkout

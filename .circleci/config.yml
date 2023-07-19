@@ -1,0 +1,34 @@
+version: 2.1
+jobs:
+  build:
+    macos:
+      xcode: 12.2.0
+    working_directory: ~/project
+    docker:
+      - image: circleci/node:14
+
+    steps:
+      - checkout
+
+      - run:
+          name: Install dependencies
+          command: npm install
+
+      - run:
+          name: Build
+          command: npm run build
+
+      - run:
+          name: Package Electron App
+          command: |
+            npm install -g electron-packager
+            electron-packager . MyApp --platform=darwin --arch=x64 --out=dist --overwrite
+
+      - store_artifacts:
+          path: dist
+
+workflows:
+  version: 2
+  build:
+    jobs:
+      - build

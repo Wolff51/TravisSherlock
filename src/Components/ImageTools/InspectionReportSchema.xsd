@@ -1,0 +1,632 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="xs3p.xsl"?>
+<xs:schema targetNamespace="http://tempuri.org/InspectionReportSchema.xsd"
+    elementFormDefault="qualified"
+    xmlns="http://tempuri.org/InspectionReportSchema.xsd"
+    xmlns:mstns="http://tempuri.org/InspectionReportSchema.xsd"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:annotation>
+    <xs:appinfo>Inspection Report Summary</xs:appinfo>
+    <xs:documentation xml:lang="en">
+      This Schema defines the inspection report summary.
+    </xs:documentation>
+  </xs:annotation>
+
+  <xs:element name="RootElement">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="InspectionReport" minOccurs="1" maxOccurs="1"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="LightningMeasurement">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="u_blade_number" nillable="false" minOccurs="0" maxOccurs="1">
+          <xs:annotation>
+            <xs:documentation>Blade Number</xs:documentation>
+          </xs:annotation>
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:maxLength value="40"/>
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+        <xs:element name="u_calibration_expire_date" type="xs:date" nillable="true" minOccurs="0" maxOccurs="1"/>
+        <xs:element name="u_measurement_comment" nillable="true" minOccurs="0" maxOccurs="1">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:maxLength value="1000"/>
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+        <xs:element name="u_equipotential_bonding_1_resistance" type="xs:decimal" nillable="true" minOccurs="0" maxOccurs="1"/>
+        <xs:element name="u_equipotential_bonding_2_resistance" type="xs:decimal" nillable="true" minOccurs="0" maxOccurs="1"/>
+        <xs:element name="u_equipotential_bonding_3_resistance" type="xs:decimal" nillable="true" minOccurs="0" maxOccurs="1"/>
+        <xs:element name="u_last_calibration_date" type="xs:date" nillable="true" minOccurs="0" maxOccurs="1"/>
+        <xs:element name="u_measurement_device_type" nillable="true" minOccurs="0" maxOccurs="1">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:maxLength value="40"/>
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+        <xs:element name="u_measurement_method" type="lm_u_measurement_method" nillable="true" minOccurs="1" maxOccurs="1"/>
+        <xs:element name="u_measurement_okay" type="xs:boolean" nillable="true" default="true" minOccurs="1" maxOccurs="1"/>
+        <xs:element name="u_receptor_1_ps_resistance" type="xs:decimal" nillable="true" minOccurs="0" maxOccurs="1"/>
+        <xs:element name="u_receptor_1_ss_resistance" type="xs:decimal" nillable="true" minOccurs="0" maxOccurs="1"/>
+        <xs:element name="u_receptor_2_ps_resistance" type="xs:decimal" nillable="true" minOccurs="0" maxOccurs="1"/>
+        <xs:element name="u_receptor_2_ss_resistance" type="xs:decimal" nillable="true" minOccurs="0" maxOccurs="1"/>
+        <xs:element name="u_receptor_3_ps_resistance" type="xs:decimal" nillable="true" minOccurs="0" maxOccurs="1"/>
+        <xs:element name="u_receptor_3_ss_resistance" type="xs:decimal" nillable="true" minOccurs="0" maxOccurs="1"/>
+        <xs:element name="u_receptor_4_ps_resistance" type="xs:decimal" nillable="true" minOccurs="0" maxOccurs="1"/>
+        <xs:element name="u_receptor_4_ss_resistance" type="xs:decimal" nillable="true" minOccurs="0" maxOccurs="1"/>
+        <xs:element name="u_receptor_5_ps_resistance" type="xs:decimal" nillable="true" minOccurs="0" maxOccurs="1"/>
+        <xs:element name="u_receptor_5_ss_resistance" type="xs:decimal" nillable="true" minOccurs="0" maxOccurs="1"/>
+        <xs:element name="u_resistance_of_measurement" type="xs:boolean" nillable="true" default="false" minOccurs="1" maxOccurs="1"/>
+        <xs:element name="u_tip_receptor_ps_resistance" type="xs:decimal" nillable="true" minOccurs="0" maxOccurs="1"/>
+        <xs:element name="u_tip_receptor_ss_resistance" type="xs:decimal" nillable="true" minOccurs="0" maxOccurs="1"/>
+        <xs:element name="lm_base64BinaryAttachment" type="xs:base64Binary" nillable="true" minOccurs="0" maxOccurs="unbounded">
+          <xs:annotation>
+            <xs:documentation xml:lang="en">
+              Provides extra information for Lightning Measurement as binary contents coded in base64.
+            </xs:documentation>
+          </xs:annotation>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="WeatherLogbook">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="u_date" type="xs:date" nillable="true" minOccurs="0" maxOccurs="1"/>
+        <xs:element name="u_day" type="xs:integer" nillable="true" minOccurs="0" maxOccurs="1"/>
+        <xs:element name="u_humidity" type="xs:integer" nillable="true" minOccurs="0" maxOccurs="1"/>
+        <xs:element name="u_temperature" type="xs:integer" nillable="true" minOccurs="0" maxOccurs="1"/>
+        <xs:element name="u_waiting_time" type="xs:integer" nillable="true" minOccurs="0" maxOccurs="1"/>
+        <xs:element name="u_weather" nillable="true" minOccurs="0" maxOccurs="1">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:maxLength value="40"/>
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+        <xs:element name="u_windspeed" type="xs:integer" nillable="true" minOccurs="0" maxOccurs="1"/>
+        <xs:element name="u_working_time" type="xs:integer" nillable="true" minOccurs="0" maxOccurs="1"/>
+        <xs:element name="wl_base64BinaryAttachment" type="xs:base64Binary" nillable="true" minOccurs="0" maxOccurs="unbounded">
+          <xs:annotation>
+            <xs:documentation xml:lang="en">
+              Provides extra information for Weather Logbook as binary contents coded in base64.
+            </xs:documentation>
+          </xs:annotation>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="DamageEntry">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="u_amount_of_findings" type="xs:integer" nillable="false" minOccurs="0" maxOccurs="1"/>
+        <xs:element name="u_blade_area" type="de_u_blade_area" nillable="false" minOccurs="1" maxOccurs="1"/>
+        <xs:element name="u_blade_section" type="de_u_blade_section" nillable="false" minOccurs="1" maxOccurs="1"/>
+        <xs:element name="u_blade_serial_number" nillable="false" minOccurs="1" maxOccurs="1">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:maxLength value="40"/>
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+        <xs:element name="u_blade_shear_web" type="de_u_blade_shear_web" nillable="false" minOccurs="0" maxOccurs="1"/>
+        <xs:element name="u_blade_sub_section" type="de_u_blade_sub_section" nillable="false" minOccurs="1" maxOccurs="1"/>
+        <xs:element name="u_damage_description" nillable="false" minOccurs="0" maxOccurs="1">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:maxLength value="4000"/>
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+        <xs:element name="u_df_end" type="xs:decimal" nillable="false" minOccurs="1" maxOccurs="1"/>
+        <xs:element name="u_df_start" type="xs:decimal" nillable="false" minOccurs="1" maxOccurs="1"/>
+        <xs:element name="u_inside_outside" type="de_u_inside_outside" nillable="false" minOccurs="1" maxOccurs="1"/>
+        <xs:element name="u_profile_depth_end" type="xs:decimal" nillable="false" minOccurs="1" maxOccurs="1"/>
+        <xs:element name="u_profile_depth" type="xs:decimal" nillable="false" minOccurs="1" maxOccurs="1"/>
+        <xs:element name="u_size" type="xs:decimal" nillable="false" minOccurs="0" maxOccurs="1"/>
+		<xs:element name="u_size_coherent" type="de_u_size_coherent" nillable="false" minOccurs="0" maxOccurs="1"/>
+		<xs:element name="u_damaged_longitudinal" type="de_u_damaged_longitudinal" nillable="false" minOccurs="0" maxOccurs="1"/>
+		<xs:element name="u_number_of_damages" type="de_u_number_of_damages" nillable="false" minOccurs="0" maxOccurs="1"/>
+		<xs:element name="u_damaged_vgs" type="de_u_damaged_vgs" nillable="false" minOccurs="0" maxOccurs="1"/>
+		<xs:element name="u_numbermissingdeformed_vgs" type="de_u_numbermissingdeformed_vgs" nillable="false" minOccurs="0" maxOccurs="1"/>
+		<xs:element name="u_amount_of_finding" type="xs:decimal" nillable="false" minOccurs="0" maxOccurs="1"/>
+		<xs:element name="u_main_component" type="de_u_main_component" nillable="false" minOccurs="1" maxOccurs="1"/>
+        <xs:element name="u_sub_component" type="de_u_sub_component" nillable="false" minOccurs="1" maxOccurs="1"/>
+        <xs:element name="u_failure_type" type="de_u_failure_type" nillable="false" minOccurs="1" maxOccurs="1"/>
+        <xs:element name="de_base64BinaryAttachment" type="xs:base64Binary" nillable="false" minOccurs="0" maxOccurs="unbounded">
+          <xs:annotation>
+            <xs:documentation xml:lang="en">
+              Provides extra information for Damage Entry as binary contents coded in base64.
+            </xs:documentation>
+          </xs:annotation>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="InspectionReport">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="u_turbine_id"  nillable="false" minOccurs="1" maxOccurs="1"/>
+        <xs:element name="u_incident" nillable="false" minOccurs="1" maxOccurs="1">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:maxLength value="9"/>
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+        <xs:element name="u_purchase_order" nillable="false" minOccurs="0" maxOccurs="1">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:maxLength value="40"/>
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+        <xs:element name="u_blade_type" type="ir_u_blade_type" nillable="false" minOccurs="1" maxOccurs="1"/>
+        <xs:element name="u_responsible_technicians" nillable="false" minOccurs="1" maxOccurs="1">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:maxLength value="255"/>
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+        <xs:element name="u_safety_checklist" type="xs:boolean" nillable="false" minOccurs="1" maxOccurs="1"/>
+        <xs:element name="u_inspection_date" type="xs:date" nillable="false" minOccurs="1" maxOccurs="1"/>
+        <xs:element name="u_inspection_end_date" type="xs:date" nillable="false" minOccurs="1" maxOccurs="1"/>
+        <xs:element name="u_inspection_break" type="xs:boolean" nillable="false" default="false" minOccurs="1" maxOccurs="1"/>
+        <xs:element name="u_inspection_stopped" type="xs:date" nillable="false" minOccurs="0" maxOccurs="1"/>
+        <xs:element name="u_inspection_restarted" type="xs:date" nillable="false" minOccurs="0" maxOccurs="1"/>
+        <xs:element name="u_inspection_type" type="ir_u_inspection_type" nillable="false" minOccurs="1" maxOccurs="1"/>
+        <xs:element name="u_blade_a" nillable="false" minOccurs="1" maxOccurs="1">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:maxLength value="40"/>
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+        <xs:element name="u_blade_b" nillable="false" minOccurs="1" maxOccurs="1">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:maxLength value="40"/>
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+        <xs:element name="u_blade_c" nillable="false" minOccurs="1" maxOccurs="1">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:maxLength value="40"/>
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+        <xs:element name="u_blade_a_drain_hole" type="xs:boolean" nillable="false" default="false" minOccurs="1" maxOccurs="1"/>
+        <xs:element name="u_blade_b_drain_hole" type="xs:boolean" nillable="false" default="false" minOccurs="1" maxOccurs="1"/>
+        <xs:element name="u_blade_c_drain_hole" type="xs:boolean" nillable="false" default="false" minOccurs="1" maxOccurs="1"/>
+        <xs:element name="u_drain_hole_status_a" type="ir_u_drain_hole_status_a" nillable="false" minOccurs="1" maxOccurs="1"/>
+        <xs:element name="u_drain_hole_status_b" type="ir_u_drain_hole_status_b" nillable="false" minOccurs="1" maxOccurs="1"/>
+        <xs:element name="u_drain_hole_status_c" type="ir_u_drain_hole_status_c" nillable="false" minOccurs="1" maxOccurs="1"/>
+        <xs:element name="u_blade_noise" type="xs:boolean" nillable="false" default="false" minOccurs="1" maxOccurs="1"/>
+        <xs:element name="u_blade_noise_comment" nillable="false" minOccurs="0" maxOccurs="1">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:maxLength value="1000"/>
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+        <xs:element name="u_loose_parts_in_blade" type="xs:boolean" nillable="false" default="false" minOccurs="1" maxOccurs="1"/>
+        <xs:element name="u_loose_parts_comment" nillable="false" minOccurs="0" maxOccurs="1">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:maxLength value="1000"/>
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+        <xs:element name="u_blade_vacuum" type="xs:boolean" nillable="false" default="false" minOccurs="1" maxOccurs="1"/>
+        <xs:element name="u_blade_vacuum_comment" nillable="false" minOccurs="0" maxOccurs="1">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:maxLength value="1000"/>
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+        <xs:element name="u_general_remarks" nillable="false" minOccurs="1" maxOccurs="1">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:maxLength value="4000"/>
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+        <xs:element name="u_blade_set_number" nillable="false" minOccurs="1" maxOccurs="1">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+			  <xs:minLength value="1"/>
+              <xs:maxLength value="40"/>
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+        <xs:element ref="DamageEntry" minOccurs="1" maxOccurs="unbounded"/>
+        <xs:element ref="LightningMeasurement" minOccurs="0" maxOccurs="unbounded"/>
+        <xs:element ref="WeatherLogbook" minOccurs="1" maxOccurs="unbounded"/>
+        <xs:element name="ir_base64BinaryAttachment" type="xs:base64Binary" nillable="false" minOccurs="0" maxOccurs="unbounded">
+          <xs:annotation>
+            <xs:documentation xml:lang="en">
+              Provides extra information for Inspection Report as binary contents coded in base64.
+            </xs:documentation>
+          </xs:annotation>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:simpleType name="ir_u_blade_type" final="restriction" >
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="APX60" />
+      <xs:enumeration value="AW34.0" />
+      <xs:enumeration value="AW37.5" />
+      <xs:enumeration value="AW37.5_2" />
+      <xs:enumeration value="AW40.3" />
+      <xs:enumeration value="AW56.7" />
+      <xs:enumeration value="AW56.7_1" />
+      <xs:enumeration value="AW61.2" />
+      <xs:enumeration value="AW64.6" />
+      <xs:enumeration value="AW64.7" />
+      <xs:enumeration value="AW68.7" />
+      <xs:enumeration value="AW72.4" />
+      <xs:enumeration value="LM29" />
+      <xs:enumeration value="LM34.0" />
+      <xs:enumeration value="LM37.3" />
+      <xs:enumeration value="LM38.8" />
+      <xs:enumeration value="LM40.3" />
+      <xs:enumeration value="LM43.8" />
+      <xs:enumeration value="LM48.8" />
+      <xs:enumeration value="NOI34.0" />
+      <xs:enumeration value="NOI37.5" />
+      <xs:enumeration value="NR34.0" />
+      <xs:enumeration value="NR37.5" />
+      <xs:enumeration value="NR45" />
+      <xs:enumeration value="NR50" />
+      <xs:enumeration value="NR58.5" />
+      <xs:enumeration value="NR65.5" />
+      <xs:enumeration value="NR74.5" />
+	  <xs:enumeration value="NR77.5" />
+      <xs:enumeration value="NR81.5" />
+      <xs:enumeration value="NR87.5" />
+
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="ir_u_inspection_type" final="restriction" >
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Touch inspection: Mobile Elevating Platform MEWM (cherry picker)" />
+      <xs:enumeration value="Touch inspection: On ground" />
+      <xs:enumeration value="Touch inspection: Rope" />
+      <xs:enumeration value="Touch inspection: Suspended platform" />
+      <xs:enumeration value="Visual inspection: Drone" />
+      <xs:enumeration value="Visual inspection: On ground" />
+      <xs:enumeration value="Visual inspection: Other" />
+      <xs:enumeration value="Visual inspection: Tower climb robot" />
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="ir_u_drain_hole_status_a" final="restriction" >
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Could not be opened" />
+      <xs:enumeration value="Open" />
+      <xs:enumeration value="Opened during inspection" />
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="ir_u_drain_hole_status_b" final="restriction" >
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Could not be opened" />
+      <xs:enumeration value="Open" />
+      <xs:enumeration value="Opened during inspection" />
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="ir_u_drain_hole_status_c" final="restriction" >
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Could not be opened" />
+      <xs:enumeration value="Open" />
+      <xs:enumeration value="Opened during inspection" />
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="de_u_blade_area" final="restriction" >
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="LE" />
+      <xs:enumeration value="PS" />
+      <xs:enumeration value="SS" />
+      <xs:enumeration value="TE" />
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="de_u_blade_section" final="restriction" >
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Section 1" />
+      <xs:enumeration value="Section 2" />
+      <xs:enumeration value="Section 3" />
+      <xs:enumeration value="Section 4" />
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="de_u_blade_shear_web" final="restriction" >
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Shear Web A" />
+      <xs:enumeration value="Shear Web B" />
+      <xs:enumeration value="Shear Web C" />
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="de_u_blade_sub_section" final="restriction" >
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Bonding" />
+      <xs:enumeration value="Shear Web" />
+      <xs:enumeration value="Shell" />
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="de_u_inside_outside" final="restriction" >
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Inside" />
+      <xs:enumeration value="Outside" />
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="de_u_main_component" final="restriction" >
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Blade" />
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="de_u_sub_component" final="restriction" >
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Accessoires - 0 degree marking" />
+      <xs:enumeration value="Accessoires - AIS (Anti Icing System)" />
+      <xs:enumeration value="Accessoires - Blade bolts" />
+      <xs:enumeration value="Accessoires - Gurney flaps" />
+      <xs:enumeration value="Accessoires - IDD blade" />
+      <xs:enumeration value="Accessoires - Identification marking" />
+      <xs:enumeration value="Accessoires - IPC" />
+      <xs:enumeration value="Accessoires - LEP (Leading Edge Protection)" />
+      <xs:enumeration value="Accessoires - LPS (lighting protection system) alu tip" />
+      <xs:enumeration value="Accessoires - LPS (lighting protection system) cable" />
+      <xs:enumeration value="Accessoires - LPS (lighting protection system) receptor" />
+      <xs:enumeration value="Accessoires - Manhole cover" />
+      <xs:enumeration value="Accessoires - Metal Vortex Generators" />
+      <xs:enumeration value="Accessoires - Plastic Vortex Generators" />
+      <xs:enumeration value="Accessoires - Rain deflector" />
+      <xs:enumeration value="Accessoires - Serrations" />
+      <xs:enumeration value="Accessoires - Water drain hole" />
+      <xs:enumeration value="Accessoires - Zig zag tape" />
+      <xs:enumeration value="Accessories - LPS (lighting protection system) equipotential bonding rail" />
+      <xs:enumeration value="Blade inside - Blade weight" />
+      <xs:enumeration value="Blade inside - Bondline" />
+      <xs:enumeration value="Blade inside - Bulkhead" />
+      <xs:enumeration value="Blade inside - Main Girder" />
+      <xs:enumeration value="Blade inside - Shell/web" />
+      <xs:enumeration value="Blade inside - Web laminate" />
+	  <xs:enumeration value="Blade inside – Root Joint" />
+      <xs:enumeration value="Blade outside - Bondline" />
+      <xs:enumeration value="Blade outside - Shell Coating (laminate not damaged)" />
+      <xs:enumeration value="Blade outside - Shell laminate" />
+      <xs:enumeration value="Type of Sub-component is missing (Blade)" />
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="de_u_failure_type" final="restriction" >
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Bonding completeness" />
+	  <xs:enumeration value="Coating Failure" />
+      <xs:enumeration value="Buckling" />
+      <xs:enumeration value="Burn mark" />
+      <xs:enumeration value="Crack, diagonal" />
+      <xs:enumeration value="Crack, longitudinal" />
+      <xs:enumeration value="Crack, transversal" />
+      <xs:enumeration value="Damaged / eroded (laminate not damaged)" />
+      <xs:enumeration value="Deformation" />
+      <xs:enumeration value="Delamination" />
+      <xs:enumeration value="Deviation in sealing" />
+      <xs:enumeration value="Dirt (e.g. dust)" />
+      <xs:enumeration value="Discolouration" />
+      <xs:enumeration value="Material spalling" />
+      <xs:enumeration value="Melted" />
+	  <xs:enumeration value="Missing (laminate damaged)" />
+      <xs:enumeration value="Missing (laminate not damaged)" />
+      <xs:enumeration value="Missing/wrong labeling" />
+      <xs:enumeration value="Pinhole" />
+      <xs:enumeration value="Scratches" />
+	  <xs:enumeration value="Dents/dints/pore" />
+	  <xs:enumeration value="Edge Sealer only" />
+	  <xs:enumeration value="no failure found / for information only" />
+      <xs:enumeration value="Type of failure is missing" />
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="de_u_size_coherent" final="restriction" >
+    <xs:restriction base="xs:decimal">
+      <xs:enumeration value="0.1" />
+      <xs:enumeration value="0.2" />
+	  <xs:enumeration value="0.3" />
+	  <xs:enumeration value="0.4" />
+	  <xs:enumeration value="0.5" />
+	  <xs:enumeration value="0.6" />
+	  <xs:enumeration value="0.7" />
+	  <xs:enumeration value="0.8" />
+	  <xs:enumeration value="0.9" />
+	  <xs:enumeration value="1.0" />
+	  <xs:enumeration value="1.1" />
+	  <xs:enumeration value="1.2" />
+	  <xs:enumeration value="1.3" />
+	  <xs:enumeration value="1.4" />
+	  <xs:enumeration value="1.5" />
+	  <xs:enumeration value="1.6" />
+	  <xs:enumeration value="1.7" />
+	  <xs:enumeration value="1.8" />
+	  <xs:enumeration value="1.9" />
+	  <xs:enumeration value="2.0" />
+	  <xs:enumeration value="2.5" />
+	  <xs:enumeration value="3.0" />
+	  <xs:enumeration value="3.5" />
+	  <xs:enumeration value="4.0" />
+	  <xs:enumeration value="4.5" />
+	  <xs:enumeration value="5.0" />
+	  <xs:enumeration value="6.0" />
+	  <xs:enumeration value="7.0" />
+	  <xs:enumeration value="8.0" />
+	  <xs:enumeration value="9.0" />
+	  <xs:enumeration value="10.0" />
+    </xs:restriction>
+  </xs:simpleType>
+  
+  <xs:simpleType name="de_u_damaged_longitudinal" final="restriction" >
+    <xs:restriction base="xs:decimal">
+      <xs:enumeration value="0.3" />
+      <xs:enumeration value="0.5" />
+	  <xs:enumeration value="0.75" />
+	  <xs:enumeration value="1.0" />
+	  <xs:enumeration value="1.5" />
+	  <xs:enumeration value="2.0" />
+	  <xs:enumeration value="2.5" />
+	  <xs:enumeration value="3.0" />
+	  <xs:enumeration value="3.5" />
+	  <xs:enumeration value="4.0" />
+	  <xs:enumeration value="4.5" />
+	  <xs:enumeration value="5.0" />
+	  <xs:enumeration value="6.0" />
+	  <xs:enumeration value="7.0" />
+	  <xs:enumeration value="8.0" />
+	  <xs:enumeration value="9.0" />
+	  <xs:enumeration value="10.0" />
+    </xs:restriction>
+  </xs:simpleType>
+     
+  <xs:simpleType name="de_u_number_of_damages" final="restriction" >
+    <xs:restriction base="xs:decimal">
+      <xs:enumeration value="1.0" />
+      <xs:enumeration value="2.0" />
+	  <xs:enumeration value="3.0" />
+	  <xs:enumeration value="4.0" />
+	  <xs:enumeration value="5.0" />
+	  <xs:enumeration value="6.0" />
+	  <xs:enumeration value="7.0" />
+	  <xs:enumeration value="8.0" />
+	  <xs:enumeration value="9.0" />
+	  <xs:enumeration value="10.0" />
+	  <xs:enumeration value="11.0" />
+	  <xs:enumeration value="12.0" />
+	  <xs:enumeration value="13.0" />
+	  <xs:enumeration value="14.0" />
+	  <xs:enumeration value="15.0" />
+	  <xs:enumeration value="16.0" />
+	  <xs:enumeration value="17.0" />
+	  <xs:enumeration value="18.0" />
+	  <xs:enumeration value="19.0" />
+	  <xs:enumeration value="20.0" />
+    </xs:restriction>
+  </xs:simpleType>
+  
+     
+  <xs:simpleType name="de_u_damaged_vgs" final="restriction" >
+    <xs:restriction base="xs:decimal">
+      <xs:enumeration value="1.0" />
+      <xs:enumeration value="2.0" />
+	  <xs:enumeration value="3.0" />
+	  <xs:enumeration value="4.0" />
+	  <xs:enumeration value="5.0" />
+	  <xs:enumeration value="6.0" />
+	  <xs:enumeration value="7.0" />
+	  <xs:enumeration value="8.0" />
+	  <xs:enumeration value="9.0" />
+	  <xs:enumeration value="10.0" />
+	  <xs:enumeration value="11.0" />
+	  <xs:enumeration value="12.0" />
+	  <xs:enumeration value="13.0" />
+	  <xs:enumeration value="14.0" />
+	  <xs:enumeration value="15.0" />
+	  <xs:enumeration value="16.0" />
+	  <xs:enumeration value="17.0" />
+	  <xs:enumeration value="18.0" />
+	  <xs:enumeration value="19.0" />
+	  <xs:enumeration value="20.0" />
+    </xs:restriction>
+  </xs:simpleType>
+     
+  <xs:simpleType name="de_u_numbermissingdeformed_vgs" final="restriction" >
+    <xs:restriction base="xs:decimal">
+      <xs:enumeration value="1.0" />
+      <xs:enumeration value="2.0" />
+	  <xs:enumeration value="3.0" />
+	  <xs:enumeration value="4.0" />
+	  <xs:enumeration value="5.0" />
+	  <xs:enumeration value="6.0" />
+	  <xs:enumeration value="7.0" />
+	  <xs:enumeration value="8.0" />
+	  <xs:enumeration value="9.0" />
+	  <xs:enumeration value="10.0" />
+	  <xs:enumeration value="11.0" />
+	  <xs:enumeration value="12.0" />
+	  <xs:enumeration value="13.0" />
+	  <xs:enumeration value="14.0" />
+	  <xs:enumeration value="15.0" />
+	  <xs:enumeration value="16.0" />
+	  <xs:enumeration value="17.0" />
+	  <xs:enumeration value="18.0" />
+	  <xs:enumeration value="19.0" />
+	  <xs:enumeration value="20.0" />
+	  <xs:enumeration value="21.0" />
+      <xs:enumeration value="22.0" />
+	  <xs:enumeration value="23.0" />
+	  <xs:enumeration value="24.0" />
+	  <xs:enumeration value="25.0" />
+	  <xs:enumeration value="26.0" />
+	  <xs:enumeration value="27.0" />
+	  <xs:enumeration value="28.0" />
+	  <xs:enumeration value="29.0" />
+	  <xs:enumeration value="30.0" />
+	  <xs:enumeration value="31.0" />
+	  <xs:enumeration value="32.0" />
+	  <xs:enumeration value="33.0" />
+	  <xs:enumeration value="34.0" />
+	  <xs:enumeration value="35.0" />
+	  <xs:enumeration value="36.0" />
+	  <xs:enumeration value="37.0" />
+	  <xs:enumeration value="38.0" />
+	  <xs:enumeration value="39.0" />
+	  <xs:enumeration value="40.0" />
+	  <xs:enumeration value="41.0" />
+      <xs:enumeration value="42.0" />
+	  <xs:enumeration value="43.0" />
+	  <xs:enumeration value="44.0" />
+	  <xs:enumeration value="45.0" />
+	  <xs:enumeration value="46.0" />
+	  <xs:enumeration value="47.0" />
+	  <xs:enumeration value="48.0" />
+	  <xs:enumeration value="49.0" />
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="lm_u_measurement_method" final="restriction" >
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="2-terminal method" />
+      <xs:enumeration value="4-terminal method" />
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="ir_turbine_identifier">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="\s{50}"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+</xs:schema>

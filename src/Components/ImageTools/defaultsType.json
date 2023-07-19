@@ -1,0 +1,22 @@
+[
+  {
+    "name": "Crack",
+    "description": "Presence of one or more cracks on the surface of the wind turbine blade, which may compromise its strength and performance."
+  },
+  {
+    "name": "Erosion",
+    "description": "Gradual wear of the surface of the wind turbine blade due to the impact of natural elements (wind, rain, sand, etc.), which may cause a decrease in its efficiency."
+  },
+  {
+    "name": "Delamination",
+    "description": "Separation of the different layers that make up the wind turbine blade, which can result in degradation of its structure and performance."
+  },
+  {
+    "name": "Corrosion",
+    "description": "Chemical process of degradation of the surface of the wind turbine blade due to exposure to moisture, salt, or other corrosive substances, which can cause deterioration of its mechanical properties."
+  },
+  {
+    "name": "Impact damage",
+    "description": "Damage caused by the impact of external objects (debris, birds, etc.) on the surface of the wind turbine blade, which can result in fractures, deformations, or other defects."
+  }
+]

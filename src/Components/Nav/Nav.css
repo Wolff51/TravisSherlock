@@ -1,0 +1,11 @@
+#Nav{
+    -webkit-app-region: drag;
+}
+
+.NoDrag{
+    -webkit-app-region: no-drag;
+}
+
+.cursorNone{
+    cursor: default;
+}

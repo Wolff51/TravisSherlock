@@ -1,0 +1,7 @@
+#SmallNav{
+    -webkit-app-region: drag;
+}
+
+.NoDrag{
+    -webkit-app-region: no-drag;
+}

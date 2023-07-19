@@ -25,7 +25,6 @@
     "dotenv": "^16.0.3",
     "electron-is-dev": "^2.0.0",
     "electron-log": "^4.4.8",
-    "electron-packager": "^17.1.1",
     "exif-parser": "^0.1.12",
     "fs": "^0.0.1-security",
     "hoist-non-react-statics": "^3.3.2",
@@ -62,7 +61,9 @@
     "electrondev": "set ELECTRON_IS_DEV=1 && electron .",
     "electron-trace": "electron --trace-warnings .",
     "electron:package:win": "yarn build && electron-builder -w -c.extraMetadata.main=build/electron.js && cp -R python build/",
-    "electron:package:mac": "yarn build && electron-builder -m -c.extraMetadata.main=build/electron.js && cp -R python build/",
+    "build-macos": "electron-packager . SherlockTest --platform=darwin --arch=x64 --out=dist --overwrite",
+    "create-dmg": "electron-installer-dmg dist/SherlockTest-darwin-x64/SherlockTest.app SherlockTest --out=dist --overwrite",
+    "electron:package:mac": "yarn build && electron-builder -m -c.extraMetadata.main=build/electron.js",
     "electron:package:linux": "yarn build && electron-builder -l -c.extraMetadata.main=build/electron.js && cp -R python build/"
   },
   "build": {
@@ -122,7 +123,8 @@
     "electron-builder": "^24.4.0",
     "electron-devtools-installer": "^3.2.0",
     "electron-installer-dmg": "^4.0.0",
-    "electron-is-dev": "^2.0.0"
+    "electron-is-dev": "^2.0.0",
+    "electron-packager": "^17.1.1"
   },
   "browserslist": {
     "production": [

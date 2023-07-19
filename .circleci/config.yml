@@ -1,28 +1,23 @@
 version: 2.1
+
+executors:
+  mac_executor:
+    macos:
+      xcode: "12.5.0"
+
 jobs:
   build:
-    macos:
-      xcode: 12.2.0
-    working_directory: ~/project
-    docker:
-      - image: circleci/node:14
-
+    executor: mac_executor
     steps:
       - checkout
 
       - run:
           name: Install dependencies
-          command: npm install
+          command: npm ci
 
       - run:
-          name: Build
+          name: Build Electron app
           command: npm run build
-
-      - run:
-          name: Package Electron App
-          command: |
-            npm install -g electron-packager
-            electron-packager . MyApp --platform=darwin --arch=x64 --out=dist --overwrite
 
       - store_artifacts:
           path: dist

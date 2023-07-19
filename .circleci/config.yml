@@ -1,13 +1,10 @@
 version: 2.1
 
-executors:
-  mac_executor:
-    macos:
-      xcode: "12.5.0"
-
 jobs:
   build:
-    executor: mac_executor
+    machine:
+      image: circleci/macos:latest
+
     steps:
       - checkout
 

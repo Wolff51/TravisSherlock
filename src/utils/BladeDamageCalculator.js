@@ -133,7 +133,7 @@ class Side extends Blade {
     constructor(bladePath, bladeSerialNumber, bladeModel, sidePath, missionType) {
         super(bladePath, bladeSerialNumber, bladeModel);
         this.sidePath = sidePath;
-        this.sideState = JSON.parse(fs.readFileSync(sidePath + '\\side_state.json', 'utf8'));
+        this.sideState = JSON.parse(fs.readFileSync(sidePath + '/side_state.json', 'utf8'));
         if (missionType == 3) {
             this.imageHeight = 5460;
         }
@@ -221,7 +221,7 @@ class Damage {
     }
 
     calculateProfileDepthPercent() {
-        const pathComponents = path.normalize(this.imageChars['path']).split('\\');
+        const pathComponents = path.normalize(this.imageChars['path']).split('/');
         const sideName = pathComponents[pathComponents.length - 2]
         if (sideName === 'LE') {
             this.profileDepthStart = 0;

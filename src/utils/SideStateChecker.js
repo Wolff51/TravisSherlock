@@ -2,7 +2,7 @@ const fs = window.require('fs');
 // pathToSide = directorypath/WTG/Component/Side
 class SideStateChecker {
     constructor(pathToSide) {
-        this.pathToFile = pathToSide + '\\side_state.json';
+        this.pathToFile = pathToSide + '/side_state.json';
         if (fs.existsSync(this.pathToFile)) {
             this.sideState = JSON.parse(fs.readFileSync(this.pathToFile, 'utf8'));
         } else {

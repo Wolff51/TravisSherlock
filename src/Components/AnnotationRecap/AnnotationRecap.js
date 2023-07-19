@@ -38,7 +38,7 @@ function AnnotationRecap(WT) {
 
 
     useEffect(() => {
-        const isLockOrNot = fs.existsSync(directoryPathFastProcess + "\\" + turbineOnTreatment.WT + "\\InspectionReport.xml");
+        const isLockOrNot = fs.existsSync(directoryPathFastProcess + "/" + turbineOnTreatment.WT + "/InspectionReport.xml");
         if (isLockOrNot) {
             setIsLockWT(true);
         } else {
@@ -290,7 +290,7 @@ function AnnotationRecap(WT) {
     useEffect(() => {
         if (turbineOnTreatment.BLADE === null) return;
         setLoading(true);
-        const pathToRead = directoryPathFastProcess + "\\" + turbineOnTreatment.WT + '/' + turbineOnTreatment.COMPONENT + '/' + turbineOnTreatment.BLADE + '/SideDamage.json';
+        const pathToRead = directoryPathFastProcess + "/" + turbineOnTreatment.WT + '/' + turbineOnTreatment.COMPONENT + '/' + turbineOnTreatment.BLADE + '/SideDamage.json';
         fs.readFile(pathToRead, 'utf8', function (err, data) {
             if (err) {
                 console.log(err);
@@ -340,7 +340,7 @@ function AnnotationRecap(WT) {
 
     const handleGoToDetails = (component, blade, id) => {
 
-        const pathToRead = directoryPathFastProcess + "\\" + turbineOnTreatment.WT + '/' + component + '/' + blade + '/SideDamage.json';
+        const pathToRead = directoryPathFastProcess + "/" + turbineOnTreatment.WT + '/' + component + '/' + blade + '/SideDamage.json';
         fs.readFile(pathToRead, 'utf8', function (err, data) {
             if (err) {
                 console.log(err);
@@ -376,7 +376,7 @@ function AnnotationRecap(WT) {
 
     const handleDeleteAWhereIndex = (id) => {
         setLoading(true);
-        const pathToRead = directoryPathFastProcess + "\\" + turbineOnTreatment.WT + "\\InspectionReport.json";
+        const pathToRead = directoryPathFastProcess + "/" + turbineOnTreatment.WT + "/InspectionReport.json";
         fs.readFile(pathToRead, 'utf8', function (err, data) {
             if (err) {
                 console.log(err);
@@ -471,7 +471,7 @@ function AnnotationRecap(WT) {
     }
 
     const handleSaveNewInspectionJson = (id, subComponent, failureType) => {
-        const pathToRead = directoryPathFastProcess + "\\" + turbineOnTreatment.WT + '/' + turbineOnTreatment.COMPONENT + '/' + turbineOnTreatment.BLADE + '/SideDamage.json';
+        const pathToRead = directoryPathFastProcess + "/" + turbineOnTreatment.WT + '/' + turbineOnTreatment.COMPONENT + '/' + turbineOnTreatment.BLADE + '/SideDamage.json';
         console.log(pathToRead);
         fs.readFile(pathToRead, 'utf8', function (err, data) {
             if (err) {
@@ -527,7 +527,7 @@ function AnnotationRecap(WT) {
             COMPONENT: turbineOnTreatment.COMPONENT,
             BLADE: turbineOnTreatment.BLADE,
         };
-        fs.readFile(directoryPathFastProcess + "\\" + turbineOnTreatment.WT + "\\InspectionReport.json", 'utf8', function (err, data) {
+        fs.readFile(directoryPathFastProcess + "/" + turbineOnTreatment.WT + "/InspectionReport.json", 'utf8', function (err, data) {
             if (err) {
                 console.log(err);
                 return;
@@ -543,14 +543,14 @@ function AnnotationRecap(WT) {
             }
             );
             obj.DamageEntry = newDamageList;
-            fs.writeFile(directoryPathFastProcess + "\\" + turbineOnTreatment.WT + "\\InspectionReport.json", JSON.stringify(obj), function (err) {
+            fs.writeFile(directoryPathFastProcess + "/" + turbineOnTreatment.WT + "/InspectionReport.json", JSON.stringify(obj), function (err) {
                 if (err) return console.log(err);
                 console.log('Annotations resetted');
-                fs.readFile(directoryPathFastProcess + "\\.workflow_cache.json", 'utf8', function (err, data) {
+                fs.readFile(directoryPathFastProcess + "/.workflow_cache.json", 'utf8', function (err, data) {
                     if (err) return console.log(err);
                     const newWorkflowCache = JSON.parse(data);
                     newWorkflowCache[turbineOnTreatment.WT][turbineOnTreatment.COMPONENT][turbineOnTreatment.BLADE]['State'] === 1;
-                    fs.writeFile(directoryPathFastProcess + "\\.workflow_cache.json", JSON.stringify(newWorkflowCache), function (err) {
+                    fs.writeFile(directoryPathFastProcess + "/.workflow_cache.json", JSON.stringify(newWorkflowCache), function (err) {
                         if (err) return console.log(err);
                         ipcRenderer.send('updateFastProcess', treatingBlade);
                     }
@@ -566,10 +566,10 @@ function AnnotationRecap(WT) {
     */
 
     /*    const handleConvert = () => {
-            const directoryPath = 'N:\\ope_sav\\Sherlock\\2023_06_05__Bois_Clergeons'
+            const directoryPath = 'N:/ope_sav/Sherlock/2023_06_05__Bois_Clergeons'
     
-            const pathToSideDamage = directoryPath + "\\" + 'E01' + "\\" + '2' + "\\" + 'TE' + "\\SideDamage.json";
-            const pathToRead = directoryUrl + "\\" + turbineOnTreatment.WT + "\\InspectionReport.json";
+            const pathToSideDamage = directoryPath + "/" + 'E01' + "/" + '2' + "/" + 'TE' + "/SideDamage.json";
+            const pathToRead = directoryUrl + "/" + turbineOnTreatment.WT + "/InspectionReport.json";
             const arrayToPush = [];
     
             fs.readFile(pathToRead, 'utf8', function (err, data) {

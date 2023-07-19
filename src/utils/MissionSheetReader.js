@@ -13,7 +13,7 @@ function capitalize(string) {
 
 class MissionSheetReader {
     constructor(pathToWindFarm) {
-        this.missionData = JSON.parse(fs.readFileSync(pathToWindFarm + '\\mission_sheet.json', 'utf8'));
+        this.missionData = JSON.parse(fs.readFileSync(pathToWindFarm + '/mission_sheet.json', 'utf8'));
     }
 
     getWindFarmName() {

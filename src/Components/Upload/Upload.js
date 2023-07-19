@@ -178,9 +178,9 @@ function Upload() {
                 return;
             }
             setPendingDirectoryPathState(path[0]);
-            if (fs.existsSync(path + "\\mission_sheet.json")) {
+            if (fs.existsSync(path + "/mission_sheet.json")) {
                 const missionSheet = JSON.parse(
-                    fs.readFileSync(path + "\\mission_sheet.json", "utf8")
+                    fs.readFileSync(path + "/mission_sheet.json", "utf8")
                 );
                 setUploadState('confirmUpload')
                 setSelectParcState(missionSheet["wind_farm_name"])
@@ -227,12 +227,12 @@ function Upload() {
     //        ipcRenderer.send("scan-directory", nasPath);
     //      } else {
     //        let pathToNas;
-    //        if (fs.existsSync("N:\\Sherlock")) {
-    //          pathToNas = "N:\\Sherlock"
-    //        } else if (fs.existsSync("N:\\ope_sav\\Sherlock")) {
-    //         pathToNas = "N:\\ope_sav\\Sherlock"
+    //        if (fs.existsSync("N:/Sherlock")) {
+    //          pathToNas = "N:/Sherlock"
+    //        } else if (fs.existsSync("N:/ope_sav/Sherlock")) {
+    //         pathToNas = "N:/ope_sav/Sherlock"
     //        }
-    //        // const pathToNas = "C:\\Users\\wolff\\Desktop\\Parc"
+    //        // const pathToNas = "C:/Users/wolff/Desktop/Parc"
     //        setIsSorted(false);
     //        setLoading(true);
     //        ipcRenderer.send("scan-directory", pathToNas);
@@ -251,18 +251,18 @@ function Upload() {
             if (nas === true) {
                 ipcRenderer.send("scan-directory", nasPath);
             } else {
-                if (fs.existsSync("N:\\Sherlock")) {
-                    dispatch(setNasDirectoryPath("N:\\Sherlock"))
-                } else if (fs.existsSync("N:\\ope_sav\\Sherlock")) {
-                    dispatch(setNasDirectoryPath("N:\\ope_sav\\Sherlock"))
+                if (fs.existsSync("N:/Sherlock")) {
+                    dispatch(setNasDirectoryPath("N:/Sherlock"))
+                } else if (fs.existsSync("N:/ope_sav/Sherlock")) {
+                    dispatch(setNasDirectoryPath("N:/ope_sav/Sherlock"))
                 }
-                // dispatch(setNasDirectoryPath("C:\\Users\\wolff\\Desktop\\Parc"))
+                // dispatch(setNasDirectoryPath("C:/Users/wolff/Desktop/Parc"))
             }
         } else if (team === "external") {
-            if (fs.existsSync("N:\\Sherlock")) {
-                dispatch(setNasDirectoryPath("N:\\Sherlock"))
-            } else if (fs.existsSync("N:\\ope_sav\\Sherlock")) {
-                dispatch(setNasDirectoryPath("N:\\ope_sav\\Sherlock"))
+            if (fs.existsSync("N:/Sherlock")) {
+                dispatch(setNasDirectoryPath("N:/Sherlock"))
+            } else if (fs.existsSync("N:/ope_sav/Sherlock")) {
+                dispatch(setNasDirectoryPath("N:/ope_sav/Sherlock"))
             } else {
                 setAllowAccess(false);
             }
@@ -544,14 +544,14 @@ function Upload() {
         if (typeOfProcess === 'Nordex') {
             setLoading(true);
             localStorage.setItem("directoryPathFastProcess", pendingDirectoryPathState);
-            localStorage.setItem("missionSheetFastProcess", pendingDirectoryPathState + "\\mission_sheet.json");
+            localStorage.setItem("missionSheetFastProcess", pendingDirectoryPathState + "/mission_sheet.json");
             navigate("/fastprocess");
             setLoading(false);
             return;
         } else {
             setLoading(true);
             localStorage.setItem("directoryPath", pendingDirectoryPathState);
-            localStorage.setItem("missionSheet", pendingDirectoryPathState + "\\mission_sheet.json");
+            localStorage.setItem("missionSheet", pendingDirectoryPathState + "/mission_sheet.json");
             setDirectoryPathState('pendingDirectoryPathState');
         }
     };
@@ -701,7 +701,7 @@ function Upload() {
 
     const handleConfirmModal = async () => {
         if (typeOfMessage === 'verify') {
-            fs.readFile(parcPath + "\\mission_sheet.json", "utf8", (err, data) => {
+            fs.readFile(parcPath + "/mission_sheet.json", "utf8", (err, data) => {
                 if (err) {
                     console.log(err);
                     return;
@@ -712,7 +712,7 @@ function Upload() {
                 } else {
                     missionSheetUpToDate["progression"]["step"] = 3;
                 }
-                fs.writeFile(parcPath + "\\mission_sheet.json", JSON.stringify(missionSheetUpToDate), (err) => {
+                fs.writeFile(parcPath + "/mission_sheet.json", JSON.stringify(missionSheetUpToDate), (err) => {
                     if (err) {
                         console.log(err);
                         return;
@@ -776,14 +776,14 @@ function Upload() {
 
         await promise;
 
-        fs.readFile(archiveParcPath + "\\mission_sheet.json", "utf8", (err, data) => {
+        fs.readFile(archiveParcPath + "/mission_sheet.json", "utf8", (err, data) => {
             if (err) {
                 console.log(err);
                 return;
             }
             const missionSheetUpToDate = JSON.parse(data);
             missionSheetUpToDate["progression"]["step"] = 9;
-            fs.writeFile(archiveParcPath + "\\mission_sheet.json", JSON.stringify(missionSheetUpToDate), (err) => {
+            fs.writeFile(archiveParcPath + "/mission_sheet.json", JSON.stringify(missionSheetUpToDate), (err) => {
                 if (err) {
                     console.log(err);
                     return;
@@ -841,14 +841,14 @@ function Upload() {
     }
 
     const handleDefineTypeOfProcessMissionSheet = (param) => {
-        fs.readFile(parcPath + "\\mission_sheet.json", "utf8", (err, data) => {
+        fs.readFile(parcPath + "/mission_sheet.json", "utf8", (err, data) => {
             if (err) {
                 console.log(err);
                 return;
             }
             const parseData = JSON.parse(data);
             parseData["process_type"] = param;
-            fs.writeFile(parcPath + "\\mission_sheet.json", JSON.stringify(parseData), (err) => {
+            fs.writeFile(parcPath + "/mission_sheet.json", JSON.stringify(parseData), (err) => {
                 if (err) {
                     console.log(err);
                     return;
@@ -868,7 +868,7 @@ function Upload() {
         } else if (type === 'Nordex') {
             setLoading(true);
             localStorage.setItem("directoryPathFastProcess", path);
-            localStorage.setItem("missionSheetFastProcess", path + "\\mission_sheet.json");
+            localStorage.setItem("missionSheetFastProcess", path + "/mission_sheet.json");
             // state.type = action.payload.type , i want to set nordex type here
             dispatch(setDirectoryPath(type));
             navigate('/fastprocess')
@@ -880,7 +880,7 @@ function Upload() {
             setLoading(true);
             dispatch(setDirectoryPath(type));
             localStorage.setItem("directoryPath", path);
-            localStorage.setItem("missionSheet", path + "\\mission_sheet.json");
+            localStorage.setItem("missionSheet", path + "/mission_sheet.json");
             setPendingDirectoryPathState(path);
             setDirectoryPathState(path);
         }

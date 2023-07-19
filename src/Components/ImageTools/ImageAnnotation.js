@@ -47,16 +47,16 @@ function Annotate({ wt, component, side, imageUrl, directoryUrl }) {
         let sidePath = null;
         let missionType = null;
 
-        fs.readFile(directoryUrl + '\\' + wt + '\\InspectionReport.json', (err, data) => {
+        fs.readFile(directoryUrl + '/' + wt + '/InspectionReport.json', (err, data) => {
             if (err) {
                 console.log('error reading inspection report');
                 console.log(err);
                 return;
             }
             let wtData = JSON.parse(data);
-            bladePath = directoryUrl + '\\' + wt;
+            bladePath = directoryUrl + '/' + wt;
             bladeModel = wtData.u_blade_type;
-            sidePath = directoryUrl + '\\' + wt + '\\' + component + '\\' + side;
+            sidePath = directoryUrl + '/' + wt + '/' + component + '/' + side;
             setBladeSerialNumber(
                 {
                     A: wtData.u_blade_a,
@@ -81,7 +81,7 @@ function Annotate({ wt, component, side, imageUrl, directoryUrl }) {
     }, [side, wt]);
 
     const handleCreateSideDamageJsonIfNotExist = () => {
-        const sideDamageJsonPath = directoryUrl + '\\' + wt + '\\' + component + '\\' + side + '\\SideDamage.json';
+        const sideDamageJsonPath = directoryUrl + '/' + wt + '/' + component + '/' + side + '/SideDamage.json';
         if (!fs.existsSync(sideDamageJsonPath)) {
             const damageObj = {
                 "DamageEntry": []
@@ -128,7 +128,7 @@ function Annotate({ wt, component, side, imageUrl, directoryUrl }) {
             imgURL = imgSrc
         } else {
             const imageName = imgSrc.substring(imgSrc.lastIndexOf('/') + 1);
-            imgURL = directoryUrl + '\\' + wt + '\\' + component + '\\' + side + '\\' + imageName;
+            imgURL = directoryUrl + '/' + wt + '/' + component + '/' + side + '/' + imageName;
         }
 
 
@@ -343,7 +343,7 @@ function Annotate({ wt, component, side, imageUrl, directoryUrl }) {
         isDoubt
     ) => {
 
-        const pathToSideDamageJson = directoryUrl + '\\' + wt + '\\' + component + '\\' + side + '\\' + 'SideDamage.json';
+        const pathToSideDamageJson = directoryUrl + '/' + wt + '/' + component + '/' + side + '/' + 'SideDamage.json';
 
         // convert crop part to real size
         const cropRealSize = {
@@ -507,10 +507,10 @@ function Annotate({ wt, component, side, imageUrl, directoryUrl }) {
         setAnnotationUrl(null);
         setThisAnnotationData([]);
         setIndexAnnotationData(0);
-        if (!fs.existsSync(directoryUrl + '\\' + wt + '\\' + component + '\\' + side + '\\' + 'SideDamage.json')) {
+        if (!fs.existsSync(directoryUrl + '/' + wt + '/' + component + '/' + side + '/' + 'SideDamage.json')) {
             handleCreateSideDamageJsonIfNotExist
         }
-        const pathToSideDamage = directoryUrl + '\\' + wt + '\\' + component + '\\' + side + '\\' + 'SideDamage.json';
+        const pathToSideDamage = directoryUrl + '/' + wt + '/' + component + '/' + side + '/' + 'SideDamage.json';
         fs.readFile(pathToSideDamage, "utf-8", (err, data) => {
             let stateToSet = false;
             const resultArray = [];
@@ -554,7 +554,7 @@ function Annotate({ wt, component, side, imageUrl, directoryUrl }) {
 
     const handleCorrectSubComponent = (e) => {
         setLoading(true)
-        const pathToSideDamage = directoryUrl + '\\' + wt + '\\' + component + '\\' + side + '\\' + 'SideDamage.json';
+        const pathToSideDamage = directoryUrl + '/' + wt + '/' + component + '/' + side + '/' + 'SideDamage.json';
         const newSubComponent = e.target.value;
         fs.readFile(pathToSideDamage, "utf-8", (err, data) => {
             const parsedData = JSON.parse(data);
@@ -592,7 +592,7 @@ function Annotate({ wt, component, side, imageUrl, directoryUrl }) {
 
     const handleCorrectFailureType = (e) => {
         setLoading(true)
-        const pathToSideDamage = directoryUrl + '\\' + wt + '\\' + component + '\\' + side + '\\' + 'SideDamage.json';
+        const pathToSideDamage = directoryUrl + '/' + wt + '/' + component + '/' + side + '/' + 'SideDamage.json';
         const newFailureType = e.target.value;
         fs.readFile(pathToSideDamage, "utf-8", (err, data) => {
             const parsedData = JSON.parse(data);
@@ -628,7 +628,7 @@ function Annotate({ wt, component, side, imageUrl, directoryUrl }) {
     const handleDeleteAnnotation = () => {
         setLoading(true)
         setIndexAnnotationData(0)
-        const pathToSideDamage = directoryUrl + '\\' + wt + '\\' + component + '\\' + side + '\\' + 'SideDamage.json';
+        const pathToSideDamage = directoryUrl + '/' + wt + '/' + component + '/' + side + '/' + 'SideDamage.json';
         fs.readFile(pathToSideDamage, "utf-8", (err, data) => {
             const parsedData = JSON.parse(data);
             parsedData.DamageEntry = parsedData.DamageEntry.filter((damageEntry) => {

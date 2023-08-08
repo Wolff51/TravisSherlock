@@ -3,16 +3,6 @@ version: 1.0.{build}
 os:
   - macOS
 
-# Spécifier la version de Node.js que vous souhaitez utiliser
-environment:
-  matrix:
-    - nodejs_version: "14"
-
-# Installer Node.js avec la version spécifiée
-install:
-  - ps: Install-Product node $env:nodejs_version
-  - node --version
-
 # Configurer l'environnement Node.js et installer les dépendances
 before_build:
   - npm install

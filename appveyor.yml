@@ -1,3 +1,41 @@
-build_script:
+version: 1.0.{build}
+
+os:
+  - macOS
+
+# Spécifier la version de Node.js que vous souhaitez utiliser
+environment:
+  matrix:
+    - nodejs_version: "14"
+
+# Installer Node.js avec la version spécifiée
+install:
+  - ps: Install-Product node $env:nodejs_version
+  - node --version
+
+# Configurer l'environnement Node.js et installer les dépendances
+before_build:
   - npm install
+
+# Commande de build personnalisée pour construire l'application Electron / React
+build_script:
   - npm run build
+# Déployer l'application construite (ou effectuer d'autres actions nécessaires)
+# Cela dépend de votre configuration de déploiement spécifique
+# Vous pouvez utiliser des scripts pour copier les fichiers construits vers un emplacement spécifique, etc.
+# Par exemple :
+# deploy_script:
+#   - xcopy /E /I /Y build\* C:\Path\To\Deploy\Location\
+
+# Ignorer les étapes de test pour cet exemple, mais vous pouvez les ajouter si nécessaire
+# test_script:
+#   - npm test
+
+# Les notifications de build réussi ou échoué peuvent être envoyées à un canal spécifique (optionnel)
+# notifications:
+#   - provider: Webhook
+#     url: https://example.com/webhook
+#     on_build_success: true
+#   - provider: Webhook
+#     url: https://example.com/webhook
+#     on_build_failure: true

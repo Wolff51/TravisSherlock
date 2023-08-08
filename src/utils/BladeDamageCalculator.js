@@ -221,7 +221,7 @@ class Damage {
     }
 
     calculateProfileDepthPercent() {
-        const pathComponents = path.normalize(this.imageChars['path']).split('/');
+        const pathComponents = path.normalize(this.imageChars['path']).split('\\');
         const sideName = pathComponents[pathComponents.length - 2]
         if (sideName === 'LE') {
             this.profileDepthStart = 0;

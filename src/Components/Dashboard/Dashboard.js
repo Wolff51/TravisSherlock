@@ -197,7 +197,7 @@ function Dashboard() {
         }
 
         // 
-        const missionSheetPath = `${directoryPath}/mission_sheet.json`;
+        const missionSheetPath = `${directoryPath}\\mission_sheet.json`;
         fs.readFile(missionSheetPath, "utf8", (err, data) => {
           if (err) {
             console.log("Error reading file from disk:", err);

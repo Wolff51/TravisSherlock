@@ -184,7 +184,7 @@ function Login() {
             <div className="relative flex flex-col justify-center hview overflow-hidden">
                 <div className="NoDrag w-full p-6 m-auto bg-white rounded-md shadow-md sm:max-w-xl">
                     <p className="mb-5 text-xs text-gray">
-                        Version 0.4.1
+                        Version 0.4.3
                     </p>
                     <img
                         src="./images/logo.png"
@@ -232,7 +232,7 @@ function Login() {
             <div className="relative flex flex-col justify-center hview overflow-hidden">
                 <div className="NoDrag w-full p-6 m-auto bg-white rounded-md shadow-md sm:max-w-xl">
                     <p className="mb-5 text-xs text-gray">
-                        Version 0.4.1
+                        Version 0.4.3
                     </p>
                     <img
                         src="./images/logo.png"
